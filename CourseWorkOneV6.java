@@ -64,20 +64,15 @@ public class CourseWorkOneV6
             if(keyIn != SENTINEL)
             {  
                 keyIn = in.nextInt();
-                arrayIn[i] = keyIn;
-                
-                for(int j = 1; j < arrayIn.length; j++)
+                if(arrayIn[i] != keyIn)
                 {
-                    if(arrayIn[j] == keyIn)
-                    {
-                        found = true;
-                        repeatVal++; 
-                    }
-                    else
-                    {
-                        arrayIn[j] = keyIn;
-                        count++;
-                    }
+                    arrayIn[i] = keyIn;
+                    count++;  
+                }
+                else
+                {
+                    found = true;
+                    repeatVal++; 
                 }
             }
             else
@@ -86,7 +81,7 @@ public class CourseWorkOneV6
             }
             
         }
-        //int[] result = new int[arrayIn.length - repeatVal];
+        int[] result = new int[arrayIn.length - repeatVal];
         return arrayIn; // return the unique numbers array
         
     }//end of fillArray method
