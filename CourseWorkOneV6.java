@@ -51,37 +51,45 @@ public class CourseWorkOneV6
     public static int[] fillArray(int[] arrayIn)
     {
         Scanner in = new Scanner(System.in);
+        boolean found = false;
+        int count = 0;
         int repeatVal = 0;
         int keyIn = -1;
-
-        System.out.print("Enter data for array " + arrayID
-                        + "(0 to finish): ");
-        keyIn = in.nextInt();
-        arrayIn[0] = keyIn;
-
-        for(int i = 1; i < arrayIn.length; i++)
+        
+        for(int i = 0; i < arrayIn.length; i++)
         {
-            //check for 0 to exit loop
-            if(keyIn != SENTINEL && keyIn != arrayIn[i])
-            {
-                System.out.print("Enter data for array " + arrayID
+            System.out.print("Enter data for array " + arrayID
                         + "(0 to finish): ");
+            //check for 0 to exit loop
+            if(keyIn != SENTINEL)
+            {  
                 keyIn = in.nextInt();
+                arrayIn[i] = keyIn;
+                
                 for(int j = 1; j < arrayIn.length; j++)
                 {
-                        arrayIn[i] = keyIn;
+                    if(arrayIn[j] == keyIn)
+                    {
+                        found = true;
+                        repeatVal++; 
+                    }
+                    else
+                    {
+                        arrayIn[j] = keyIn;
+                        count++;
+                    }
                 }
             }
             else
             {
                 break;
             }
+            
         }
-        int[] result = new int[arrayIn.length];
-        return result; // return the unique array
+        //int[] result = new int[arrayIn.length - repeatVal];
+        return arrayIn; // return the unique numbers array
         
     }//end of fillArray method
-    
-    
+ 
 }//end of CourseWorkOneV3 class
 
