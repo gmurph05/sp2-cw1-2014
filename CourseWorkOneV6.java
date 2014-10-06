@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class CourseWorkOneV6
 {
     //declare constants
-    final static int MAXARRAY = 4; //final version should have 100 indexes to hold 100 integers
+    final static int MAXARRAY = 8; //final version should have 100 indexes to hold 100 integers
     final static int SENTINEL = 0; // this value will be used by users to exit input loops.
     public static int arrayID = 1;
     
@@ -55,6 +55,7 @@ public class CourseWorkOneV6
         Scanner in = new Scanner(System.in);
         
         int repeatVal = 0;
+        int uniqueVal = 0;
         int keyIn = -1;
         
         for(int i = 0; i < arrayIn.length; i++)
@@ -67,8 +68,8 @@ public class CourseWorkOneV6
             if(keyIn > SENTINEL)
             {  
                 //check for repeat values by iterating through the array
-//                 for(int j = 0; j < arrayIn.length; j++)
-//                 {
+                for(int j = 0; j < arrayIn.length; j++)
+                {
 //                     if(arrayIn[j] == keyIn)
 //                     {
 //                         found = true;
@@ -79,7 +80,7 @@ public class CourseWorkOneV6
 //                     {
                         arrayIn[i] = keyIn;
 //                     }
-//                 }
+                }
             }
             else
             {
@@ -94,8 +95,6 @@ public class CourseWorkOneV6
     {
         //int[] z = new int[x.length + y.length];
         boolean found = false;
-        int count = 0;
-        
         int[] commonVal = new int[y.length];
         for(int i = 0; i < y.length; i++)
         {
@@ -112,7 +111,10 @@ public class CourseWorkOneV6
         System.out.print("Common data is: ");
         for(int i = 0; i < commonVal.length; i++)
         {
-            System.out.print(commonVal[i]);
+            if(commonVal[i] != 0)
+            {
+                System.out.print(commonVal[i]);
+            }
         }
     }
     
