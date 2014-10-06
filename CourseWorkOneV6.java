@@ -20,24 +20,32 @@ public class CourseWorkOneV6
     //declare constants
     final static int MAXARRAY = 4; //final version should have 100 indexes to hold 100 integers
     final static int SENTINEL = 0; // this value will be used by users to exit input loops.
-    
+    public static int arrayID = 1;
     
     public static void main(String[] args){
         
         //create empty integer arrays with length driven by constant
         int x100[] = new int[MAXARRAY];
-        //int y100[] = new int[MAXARRAY];
-        
+        int y100[] = new int[MAXARRAY];
+       
         fillArray(x100); // prompt user for input into array x100
         displayElements(x100);
         
-        //fillArray(y100); // prompt user for input into array y100
-        //displayElements(y100);
+        fillArray(y100); // prompt user for input into array y100
+        displayElements(y100);
             
     }//end of main method
     
     public static void displayElements(int[] x){
-        System.out.println(Arrays.toString(x));
+        
+        System.out.print("Values for array " + arrayID + " is: ");
+        arrayID++;
+        
+        for(int i = 0; i < x.length; i++)
+        {
+            System.out.print(x[i] + " ");
+        }
+        System.out.println();
     }//end of displayElements method
     
     public static int[] fillArray(int[] arrayIn)
@@ -45,7 +53,8 @@ public class CourseWorkOneV6
         Scanner in = new Scanner(System.in);
         int repeatVal = 0;
         int keyIn = -1;
-        System.out.println("Enter data for array "
+
+        System.out.print("Enter data for array " + arrayID
                         + "(0 to finish): ");
         keyIn = in.nextInt();
         arrayIn[0] = keyIn;
@@ -55,7 +64,7 @@ public class CourseWorkOneV6
             //check for 0 to exit loop
             if(keyIn != SENTINEL && keyIn != arrayIn[i])
             {
-                System.out.println("Enter data for array "
+                System.out.print("Enter data for array " + arrayID
                         + "(0 to finish): ");
                 keyIn = in.nextInt();
                 for(int j = 1; j < arrayIn.length; j++)
@@ -68,12 +77,7 @@ public class CourseWorkOneV6
                 break;
             }
         }
-
         int[] result = new int[arrayIn.length];
-        for(int i = 0; i < result.length; i++)
-        {
-            result[i] = arrayIn[i];
-        }
         return result; // return the unique array
         
     }//end of fillArray method
