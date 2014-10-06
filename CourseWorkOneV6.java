@@ -33,6 +33,8 @@ public class CourseWorkOneV6
         
         fillArray(y100); // prompt user for input into array y100
         displayElements(y100);
+        
+        displayCommon(x100,y100);
             
     }//end of main method
     
@@ -51,40 +53,69 @@ public class CourseWorkOneV6
     public static int[] fillArray(int[] arrayIn)
     {
         Scanner in = new Scanner(System.in);
-        boolean found = false;
-        int count = 0;
+        
         int repeatVal = 0;
         int keyIn = -1;
         
         for(int i = 0; i < arrayIn.length; i++)
         {
+            boolean found = false;
             System.out.print("Enter data for array " + arrayID
                         + "(0 to finish): ");
+            keyIn = in.nextInt();
             //check for 0 to exit loop
-            if(keyIn != SENTINEL)
+            if(keyIn > SENTINEL)
             {  
-                keyIn = in.nextInt();
-                if(arrayIn[i] != keyIn)
-                {
-                    arrayIn[i] = keyIn;
-                    count++;  
-                }
-                else
-                {
-                    found = true;
-                    repeatVal++; 
-                }
+                //check for repeat values by iterating through the array
+//                 for(int j = 0; j < arrayIn.length; j++)
+//                 {
+//                     if(arrayIn[j] == keyIn)
+//                     {
+//                         found = true;
+//                         repeatVal++; 
+//                         break;
+//                     }
+//                     if(!found)
+//                     {
+                        arrayIn[i] = keyIn;
+//                     }
+//                 }
             }
             else
             {
                 break;
             }
-            
         }
-        int[] result = new int[arrayIn.length - repeatVal];
         return arrayIn; // return the unique numbers array
         
     }//end of fillArray method
+    
+    public static void displayCommon(int[] x, int[] y)
+    {
+        //int[] z = new int[x.length + y.length];
+        boolean found = false;
+        int count = 0;
+        
+        int[] commonVal = new int[y.length];
+        for(int i = 0; i < y.length; i++)
+        {
+            for(int j = 0; j < x.length; j++)
+            {
+                if(x[i] == y[j])
+                {
+                    found = true;
+                    commonVal[i] = x[i];
+                }
+            }
+        }
+
+        System.out.print("Common data is: ");
+        for(int i = 0; i < commonVal.length; i++)
+        {
+            System.out.print(commonVal[i]);
+        }
+    }
+    
  
 }//end of CourseWorkOneV3 class
 
